@@ -8,6 +8,12 @@
     }
 
     function onReady(smart)  {
+      if (smart.hasOwnProperty('user')) {
+        var user = smart.user;
+        //try for practitioner
+        var practitioner = smart.user.fhirUser;
+
+      }
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
@@ -44,7 +50,8 @@
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
-          p.gender = gender;
+          //should be gender
+          p.gender = practitioner;
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
