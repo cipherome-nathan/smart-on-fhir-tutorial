@@ -11,7 +11,7 @@
       if (smart.hasOwnProperty('user')) {
         var user = smart.user;
         //try for practitioner
-        var practitioner = smart.user.fhirUser;
+        var practitioner = smart.user.id;
 
       }
       if (smart.hasOwnProperty('patient')) {
