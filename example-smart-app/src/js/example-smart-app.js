@@ -12,7 +12,15 @@
         var user = smart.user;
         //try for practitioner
         var practitioner = smart.user.id;
+        console.log(user);
+        console.log(practitioner);
 
+      }
+      if (smart.hasOwnProperty('Practitioner')) {
+        var practitioner = smart.practitioner;
+        var pt2 = practitioner.read();
+        console.log(practitioner);
+        //not sure where this is going
       }
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
