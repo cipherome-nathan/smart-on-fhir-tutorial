@@ -13,11 +13,14 @@
       if (smart.hasOwnProperty('userId')) {
         console.log('user Id is: '+smart.userId);
       }
-      var tokenResponse = '';
+      
       if(smart.hasOwnProperty('tokenResponse')) {
-        tokenResponse = smart.tokenResponse;
         console.log('--- get tokenResponse');
-        console.log(tokenResponse);
+        var tokenResponse = smart.tokenResponse;
+        console.log('--- get tokenResponse: '+tokenResponse);
+        console.log('access token: '+smart.tokenResponse.access_token);
+        console.log('id token: '+smart.tokenResponse['id_token']);
+        
       }
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
@@ -59,8 +62,8 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.userId = tokenResponse ? smart.userId : '';
-          p.accessToken = tokenResponse ? tokenResponse.access_token : '';
+          p.userId = smart.userId ? smart.userId : '';
+          p.accessToken = smart.tokenResponse ? smart.tokenResponse.access_token : '';
 
 
           if (typeof systolicbp != 'undefined')  {
