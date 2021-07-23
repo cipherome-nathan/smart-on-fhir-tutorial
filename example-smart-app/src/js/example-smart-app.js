@@ -64,7 +64,7 @@
           p.height = getQuantityValueAndUnit(height[0]);
           p.userId = smart.userId ? smart.userId : '';
           p.accessToken = smart.tokenResponse ? smart.tokenResponse.access_token : '';
-
+          p.idToken = smart.tokenResponse ? smart.tokenResponse.id_token : '';
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -102,6 +102,7 @@
       hdl: {value: ''},
       userId: {value: ''},
       accessToken: {value: ''},
+      idToken: {value: ''}
     };
   }
 
@@ -147,6 +148,7 @@
     $('#hdl').html(p.hdl);
     $('#userId').html(p.userId);
     $('#accessToken').html(p.accessToken);
+    $('#idToken').html(p.idToken);
   };
 
 })(window);
