@@ -9,20 +9,19 @@
 
     function onReady(smart)  {
       console.log(smart);
+      console.log('------ smart end-----');
       if (smart.hasOwnProperty('user')) {
         var user = smart.user;
         //try for practitioner
-        var practitioner = smart.user.id;
+        var practitioner = smart.user.userId;
         console.log(user);
         console.log(practitioner);
       } else {
         console.log("no user");
       }
-      if (smart.hasOwnProperty('Practitioner')) {
-        var practitioner = smart.practitioner;
-        var pt2 = practitioner.read();
-        console.log(practitioner);
-        //not sure where this is going
+      var tokenResponse = '';
+      if(smart.hasOwnProperty(tokenResponse)) {
+        tokenResponse = smart.tokenResponse;
       }
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
@@ -60,11 +59,13 @@
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
-          //should be gender
-          p.gender = practitioner;
+          p.gender = gender;
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
+          p.userId = tokenResponse ? tokenResponse.user.userId : '';
+          p.accessToken = tokenResponse ? tokenResponse.access_token : '';
+
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -100,6 +101,8 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      userId: {value: ''},
+      accessToken: {value: ''},
     };
   }
 
@@ -143,6 +146,8 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#userId').html(p.userId);
+    $('accessToken').html(p.accessToken);
   };
 
 })(window);
