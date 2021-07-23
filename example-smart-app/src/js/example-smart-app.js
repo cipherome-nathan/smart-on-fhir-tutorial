@@ -67,6 +67,7 @@
           p.idToken = smart.tokenResponse ? smart.tokenResponse.id_token : '';
 
           const client = FHIR.client("https://r2.smarthealthit.org");
+          console.log(client);
           client.request(smart.userId);
 
           if (typeof systolicbp != 'undefined')  {
