@@ -19,9 +19,14 @@
       } else {
         console.log("no user");
       }
+      if (smart.hasOwnProperty('userId')) {
+        console.log('user Id is: '+smart.userId);
+      }
       var tokenResponse = '';
       if(smart.hasOwnProperty(tokenResponse)) {
         tokenResponse = smart.tokenResponse;
+        console.log('--- get tokenResponse');
+        console.log(tokenResponse);
       }
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
@@ -63,7 +68,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.userId = tokenResponse ? tokenResponse.user.userId : '';
+          p.userId = tokenResponse ? smart.userId : '';
           p.accessToken = tokenResponse ? tokenResponse.access_token : '';
 
 
@@ -147,7 +152,7 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#userId').html(p.userId);
-    $('accessToken').html(p.accessToken);
+    $('#accessToken').html(p.accessToken);
   };
 
 })(window);
