@@ -66,13 +66,19 @@
           p.accessToken = smart.tokenResponse ? smart.tokenResponse.access_token : '';
           p.idToken = smart.tokenResponse ? smart.tokenResponse.id_token : '';
 
+          function display(data) {
+            const output = document.getElementById("output");
+            output.innerText = data instanceof Error ?
+                String(data) :
+                JSON.stringify(data, null, 4);
+          }
+        
           const client = new FHIR.client({
             serverUrl: "https://r2.smarthealthit.org",
-            tokenResponse: { idToken }
+            tokenResponse: { id_token }
           });
-          console.log(client);
         
-          client.request(client.user.fhirUser);
+          client.request(client.user.fhirUser).then(display).catch(display);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
