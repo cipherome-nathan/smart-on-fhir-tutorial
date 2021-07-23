@@ -8,13 +8,15 @@
     }
 
     function onReady(smart)  {
+      console.log(smart);
       if (smart.hasOwnProperty('user')) {
         var user = smart.user;
         //try for practitioner
         var practitioner = smart.user.id;
         console.log(user);
         console.log(practitioner);
-
+      } else {
+        console.log("no user");
       }
       if (smart.hasOwnProperty('Practitioner')) {
         var practitioner = smart.practitioner;
