@@ -10,20 +10,11 @@
     function onReady(smart)  {
       console.log(smart);
       console.log('------ smart end-----');
-      if (smart.hasOwnProperty('user')) {
-        var user = smart.user;
-        //try for practitioner
-        var practitioner = smart.user.userId;
-        console.log(user);
-        console.log(practitioner);
-      } else {
-        console.log("no user");
-      }
       if (smart.hasOwnProperty('userId')) {
         console.log('user Id is: '+smart.userId);
       }
       var tokenResponse = '';
-      if(smart.hasOwnProperty(tokenResponse)) {
+      if(smart.hasOwnProperty('tokenResponse')) {
         tokenResponse = smart.tokenResponse;
         console.log('--- get tokenResponse');
         console.log(tokenResponse);
