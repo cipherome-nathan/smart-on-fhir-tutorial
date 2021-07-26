@@ -75,7 +75,7 @@
         
           const client = new FHIR.client({
             serverUrl: "https://r2.smarthealthit.org",
-            tokenResponse: { id_token }
+            tokenResponse: { idToken }
           });
         
           client.request(client.user.fhirUser).then(display).catch(display);
