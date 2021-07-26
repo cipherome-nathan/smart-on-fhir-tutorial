@@ -67,13 +67,6 @@
           p.accessToken = smart.tokenResponse ? smart.tokenResponse.access_token : '';
           p.idToken = smart.tokenResponse ? smart.tokenResponse.id_token : '';
 
-          function display(data) {
-            const output = document.getElementById("output");
-            output.innerText = data instanceof Error ?
-                String(data) :
-                JSON.stringify(data, null, 4);
-          }
-
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
           }
