@@ -24,6 +24,7 @@
       }
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
+        const usr = smart.user.read()
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -72,13 +73,6 @@
                 String(data) :
                 JSON.stringify(data, null, 4);
           }
-        
-          const client = new FHIR.client({
-            serverUrl: "https://r2.smarthealthit.org",
-            tokenResponse: { idToken }
-          });
-        
-          client.request(client.user.fhirUser).then(display).catch(display);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;

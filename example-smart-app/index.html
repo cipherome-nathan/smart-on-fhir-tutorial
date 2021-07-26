@@ -104,6 +104,7 @@
           $('#errors').html('<p> Failed to call FHIR Service </p>');
         }
       );
+      FHIR.oauth2.ready(client => client.request(client.user.fhirUser));
     </script>
   </body>
 </html>
